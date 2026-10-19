@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOP SECRET 🤫</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #25205c, #080914 65%);
+  overflow-x: hidden;
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  padding: 32px 22px;
+  border: 1px solid #6555bb;
+  border-radius: 24px;
+  background: rgba(20, 19, 43, .9);
+  box-shadow: 0 0 40px #553b9b55;
+}
+
+.icon {
+  font-size: 65px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 30px;
+  color: #bcaaff;
+}
+
+p {
+  color: #dedaf3;
+  line-height: 1.7;
+}
+
+button {
+  padding: 14px 22px;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  background: linear-gradient(90deg, #7148ff, #c13bff);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active { transform: scale(.97); }
+
+#secret { display: none; }
+
+#count {
+  font-size: 65px;
+  color: #e3baff;
+  margin: 20px;
+}
+
+.name {
+  color: #ffb7ef;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  animation: rise 2.5s ease-out forwards;
+}
+
+@keyframes rise {
+  from { transform: translateY(0) rotate(0); opacity: 1; }
+  to { transform: translateY(-220px) rotate(240deg); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+<main class="card">
+  <section id="start">
+    <div class="icon">🔒</div>
+    <h1>TOP SECRET</h1>
+    <p>Someone has created something for you.</p>
+    <p>Warning: Your brain might not be ready. 👀</p>
+    <button onclick="begin()">UNLOCK THE SECRET 🔓</button>
+  </section>
+
+  <section id="timer" style="display:none">
+    <div class="icon">🌀</div>
+    <h1>Verifying your identity...</h1>
+    <p>Initializing friendship protocol</p>
+    <div id="count">3</div>
+    <p>Please do not panic 😂</p>
+  </section>
+
+  <section id="secret">
+    <div class="icon">🚀</div>
+    <h1>HACK COMPLETE!</h1>
+    <p>Your phone has been successfully hacked...</p>
+    <p style="font-size:12px">(Just kidding! 😂 Nothing was accessed.)</p>
+    <div class="name">YOUR PHONE HAVE BEEN HACKED! 🤣</div>
+    <p>But seriously...</p>
+    <h1>YOU'RE AN AWESOME FRIEND ❤️</h1>
+    <p>This entire website was created by your friend.</p>
+    <p>And the genius behind this surprise is...</p>
+    <div class="name">CHARAN 🤙😎</div>
+    <p>Future developer. Current troublemaker. 😂</p>
+    <button onclick="celebrate()">ONE MORE SURPRISE 🎉</button>
+    <p id="extra" style="display:none">
+      🏆 Congratulations! You survived Charan's experiment.
+      <br>Now send him a screenshot of your reaction! 😂❤️
+    </p>
+  </section>
+</main>
+
+<script>
+function begin() {
+  document.getElementById("start").style.display = "none";
+  document.getElementById("timer").style.display = "block";
+
+  let n = 3;
+  const count = document.getElementById("count");
+
+  const countdown = setInterval(() => {
+    n--;
+
+    if (n > 0) {
+      count.textContent = n;
+    } else {
+      clearInterval(countdown);
+      document.getElementById("timer").style.display = "none";
+      document.getElementById("secret").style.display = "block";
+      fireworks();
+    }
+  }, 1000);
+}
+
+function fireworks() {
+  const symbols = ["✨", "🎉", "💜", "⭐", "😂"];
+
+  for (let i = 0; i < 35; i++) {
+    const s = document.createElement("span");
+    s.className = "sparkle";
+    s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = (40 + Math.random() * 55) + "vh";
+    s.style.fontSize = (18 + Math.random() * 24) + "px";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 2600);
+  }
+}
+
+function celebrate() {
+  document.getElementById("extra").style.display = "block";
+  fireworks();
+}
+</script>
+</body>
+</html>
